@@ -27,8 +27,10 @@ const clock = document.querySelector('#clock span');
 const toggle = document.querySelector('#toggle');
 const todos = document.querySelector('#todos');
 const todoInput = todos.querySelector('input');
+const todoListEle = todos.querySelectorAll('div');
 const searchForm = document.querySelector('#search');
 const searchInput = searchForm.querySelector('input');
+const deleteAllBtn = document.querySelector('#deleteAll');
 
 let todoList = [];
 
@@ -53,6 +55,7 @@ function printTodos(todoObj) {
   const { id, inputValue } = todoObj;
   const div = document.createElement('div');
   div.classList.add(
+    'todo-list',
     'bg-yellow-50',
     'mt-2',
     'p-2',
@@ -113,8 +116,14 @@ function handleSearch(event) {
   window.open(
     `https://www.google.com/search?q=${encodeURIComponent(searchValue)}`
   );
-  console.log(searchValue);
   searchInput.value = '';
+}
+
+function deleteAll() {
+  todoList = [];
+  console.log(todos);
+  todoListEle.remove();
+  localStorage.removeItem('todos');
 }
 
 title.innerText = `Welcome!
@@ -135,3 +144,4 @@ if (localStorage.getItem('todos') !== null) {
 document.querySelector('todo-');
 
 searchForm.addEventListener('submit', handleSearch);
+deleteAllBtn.addEventListener('click', deleteAll);

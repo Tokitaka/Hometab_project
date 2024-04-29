@@ -19,14 +19,17 @@
   </head>
   <body>
     <div id="container" class="w-full h-full grid grid-cols-4 gap-8">
-      <div id="first-grid" class="overflow-hidden">
-        <form id="todos" class="p-5 w-full">
+      <div id="first-grid" class="overflow-hidden min-w-[200px]">
+        <form id="todos" class="p-5 w-full relative">
           <input
             type="text"
-            placeholder="Enter your todos"
+            placeholder="Enter todos"
             required
             class="block p-2 w-full text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
+          <div id="deleteAll" class="absolute top-7 right-7 cursor-pointer">
+            <span class="material-symbols-outlined"> delete_sweep </span>
+          </div>
         </form>
         <!-- todo list -->
       </div>
@@ -43,15 +46,15 @@
             ></div>
           </label>
           <h1
-            class="leading-snug font-bold text-6xl text-white mt-10 mb-10"
+            class="leading-snug font-bold text-5xl text-white mt-10 mb-10"
           ></h1>
         </div>
         <div id="clock" class="">
           <span class="font-black text-5xl text-white"></span>
         </div>
       </div>
-      <div id="third-grid">
-        <form id="search" class="max-w-md mx-auto">
+      <div id="third-grid" class="m-3">
+        <form id="search" class="max-w-md mx-auto min-w-[200px]">
           <label
             for="default-search"
             class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
