@@ -36,7 +36,7 @@ let todoList = [];
 function getClock() {
   const dateObj = new Date();
 
-  clock.innerText = `${dateObj.getHours()}:${String(
+  clock.innerText = `${String(dateObj.getHours()).padStart(2, 0)}:${String(
     dateObj.getMinutes()
   ).padStart(2, 0)}:${String(dateObj.getSeconds()).padStart(2, 0)}`;
 }
