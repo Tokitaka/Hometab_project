@@ -27,17 +27,16 @@ const clock = document.querySelector('#clock span');
 const toggle = document.querySelector('#toggle');
 const todos = document.querySelector('#todos');
 const todoInput = todos.querySelector('input');
-const todoListEle = todos.querySelectorAll('div');
 const searchForm = document.querySelector('#search');
 const searchInput = searchForm.querySelector('input');
-const deleteAllBtn = document.querySelector('#deleteAll');
+const deleteAllIcon = document.querySelector('#deleteAllIcon');
 
 let todoList = [];
 
 function getClock() {
   const dateObj = new Date();
 
-  clock.innerText = `${dateObj.getHours()}:${String(
+  clock.innerText = `${String(dateObj.getHours()).padStart(2, 0)}:${String(
     dateObj.getMinutes()
   ).padStart(2, 0)}:${String(dateObj.getSeconds()).padStart(2, 0)}`;
 }
@@ -120,9 +119,9 @@ function handleSearch(event) {
 }
 
 function deleteAll() {
+  const todoListDivs = document.querySelectorAll('.todo-list');
+  todoListDivs.forEach((todoDiv) => todoDiv.remove());
   todoList = [];
-  console.log(todos);
-  todoListEle.remove();
   localStorage.removeItem('todos');
 }
 
@@ -141,7 +140,5 @@ if (localStorage.getItem('todos') !== null) {
   todoList.forEach((todo) => printTodos(todo));
 }
 
-document.querySelector('todo-');
-
 searchForm.addEventListener('submit', handleSearch);
-deleteAllBtn.addEventListener('click', deleteAll);
+deleteAllIcon.addEventListener('click', deleteAll);
